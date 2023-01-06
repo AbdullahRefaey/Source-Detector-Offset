@@ -1,0 +1,46 @@
+
+% Define the properties of the LSO PET detector
+detector.radius = 5; % radius of detector face in cm
+detector.depth = 12; % depth of detector in cm
+detector.spacing = 1; % spacing between detector elements in cm
+detector.resolution = 51.1; % energy resolution of detector in keV
+
+% Define the properties of the Na-22 source
+source.activity = 10000; % activity of the source in MBq
+source.energy = 511; % energy of the gamma rays emitted by the source in keV
+
+% Define the positions of the source relative to the detector
+sourcePositions = [0 2 4 7 9]; % source positions in cm
+
+% Set the number of counts to simulate
+numCounts = 10e6; % number of counts to simulate
+
+% Loop over the source positions
+for i = 1:numel(sourcePositions)
+   
+    % Calculate the distance between the source and the center of the detector
+    distance = sqrt(sourcePositions(i)^2 + (detector.depth/2)^2);
+    
+    % Calculate the solid angle subtended by the detector at the source position
+    solidAngle = (detector.radius/distance)^2;
+    
+    % Calculate the number of counts detected by the detector
+    counts(i) = solidAngle * source.activity * (detector.resolution/source.energy)^2;
+    
+    % Round the counts to the nearest integer
+    counts(i) = round(counts(i));
+    
+    % Simulate the detected counts
+    [energies, times] = simulateCounts(counts(i), numCounts, source.energy, detector.resolution);
+    
+    % Calculate the energy spectrum
+    [counts, energies] = hist(energies,100);
+    
+    % Plot the energy spectrum
+    figure;
+    plot(energies, counts);
+    xlabel('Energy (keV)');
+    ylabel('Counts');
+    title(sprintf('Source position = %d cm', sourcePositions(i)));
+    
+end
