@@ -1,0 +1,25 @@
+This code simulates the detection of gamma rays emitted by a Na-22 source at different positions relative to an LSO PET detector. 
+The properties of the detector and the source, as well as the positions of the source and the number of counts to simulate, are defined at the beginning of the script.
+
+The code then enters a loop that iterates over the source positions. For each source position, the code calculates the distance between the source and the center of 
+the detector, and uses this distance to calculate the solid angle subtended by the detector at the source position. The code then calculates the number of counts that 
+would be detected by the detector based on the solid angle, the activity of the source, and the energy resolution of the detector.
+
+The code then calls the simulateCounts function to simulate the detected counts, given the number of counts, the energy of the gamma rays, and the energy resolution 
+of the detector. The simulateCounts function returns two vectors: a vector of simulated energies and a vector of simulated times.
+
+The code then uses the hist function to calculate the energy spectrum of the simulated counts, and plots the energy spectrum using the plot function. 
+The plot is labeled with the source position and the x- and y-axes are labeled with the energy and counts, respectively. The code then repeats the process for each 
+source position.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The simulateCounts function is a helper function that is used to simulate the detected counts given the number of counts to simulate, the energy of the gamma rays, 
+and the energy resolution of the detector. 
+The function returns two vectors: a vector of simulated energies and a vector of simulated times.
+
+The function begins by generating a vector of random energies using the randn function and scaling the values by the energy resolution of the detector. 
+It then generates a vector of random times using the rand function.
+
+The function then truncates the energies and times vectors to the desired number of counts using the colon operator as an index. 
+Finally, the function returns the energies and times vectors as output arguments.
