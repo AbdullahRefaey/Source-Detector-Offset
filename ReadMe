@@ -1,3 +1,22 @@
+This code is a simplified example of how to simulate the detection of gamma rays emitted by a Na-22 source at different positions relative to an LSO PET detector. 
+However, it is not intended to be a precise or accurate model of the actual physical process.
+
+In order to create a more accurate and precise model, you will need to take into account a number of additional factors that are not included in the simplified example. 
+Some of these factors may include:
+
+The spatial distribution of the source activity
+The energy spectrum of the gamma rays emitted by the source
+The geometric efficiency of the detector
+The angular response of the detector elements
+The energy resolution of the detector as a function of energy
+The temporal response of the detector
+The effect of scatter and attenuation in the detector and the surrounding material
+Including these factors in the model will require a more complex and detailed simulation. There are a number of tools and frameworks available for this purpose, 
+such as GATE, GEANT4, and MCNP. These tools are designed to simulate the transport of particles through matter and their interactions with detectors, and can be used 
+to create detailed and accurate models of PET scanners and other imaging systems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 This code simulates the detection of gamma rays emitted by a Na-22 source at different positions relative to an LSO PET detector. 
 The properties of the detector and the source, as well as the positions of the source and the number of counts to simulate, are defined at the beginning of the script.
 
