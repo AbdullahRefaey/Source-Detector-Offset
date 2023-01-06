@@ -1,0 +1,20 @@
+
+function [energies, times] = simulateCounts(counts, numCounts, energy, resolution)
+%SIMULATECOUNTS Simulate the detected counts
+%   [ENERGIES, TIMES] = SIMULATECOUNTS(COUNTS, NUMCOUNTS, ENERGY, RESOLUTION)
+%   simulates the detected counts given the number of counts to simulate,
+%   the energy of the gamma rays, and the energy resolution of the detector.
+%   ENERGIES is a vector of the simulated energies, and TIMES is a vector
+%   of the simulated times.
+
+% Generate a vector of random energies
+energies = energy + randn(1, numCounts) * resolution;
+
+% Generate a vector of random times
+times = rand(1, numCounts);
+
+% Truncate the vectors to the desired number of counts
+energies = energies(1:counts);
+times = times(1:counts);
+
+end
